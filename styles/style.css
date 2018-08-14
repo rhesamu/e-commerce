@@ -1,0 +1,12 @@
+html {
+  background-color: #f0f0f0;
+}
+.products, .cart-items {
+  margin-top: 80px;
+}
+
+.card-footer > .card-footer-item {
+  background-color: #00D1B2; 
+  color: white;
+  font-weight: 500;
+}
