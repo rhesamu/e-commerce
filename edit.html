@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
+  <link rel="stylesheet" href="styles/style.css">
+  <title>E-commerce Admin</title>
+</head>
+<body>
+  <div id="app">
+    <navbar 
+    :cart="cart"
+    :islogin="isLogin"
+    :userrole="userRole" >
+    </navbar>
+    <div class="container" style="margin-top: 80px">
+      <div class="columns">
+        <div class="column is-4">
+          <nav class="panel">
+            <p class="panel-heading">Actions</p>
+            <a href="admin.html" class="panel-block is-active">View products</a>
+            <a href="add.html" class="panel-block">Add new product</a>
+          </nav>
+        </div>
+        <div class="column is-8">
+          <div class="box">
+            <div class="field">
+              <label class="label">Name</label>
+              <div class="control">
+                <input v-model="name" class="input" type="text" placeholder="Image name">
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Description</label>
+              <div class="control">
+                <input v-model="description" class="input" type="text" placeholder="Describe it here">
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Category</label>
+              <div class="control">
+                <div class="select is-fullwidth">
+                  <select name="category" id="category"><option>test</option></select>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Price</label>
+              <div class="control">
+                <input v-model="price" class="input" type="number" placeholder="0">
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Stock</label>
+              <div class="control">
+                <input v-model="stock" class="input" type="number" placeholder="0">
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Image</label>
+              <div class="control">
+                <input @change="send($event)" class="input" type="file">
+              </div>
+            </div>
+            <div class="field">
+              <div class="control">
+                <button @click="editProduct" class="button is-link">Edit product</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  <script src="scripts/components/Navbar.js"></script>
+  <script src="scripts/editProduct.js"></script>
+</body>
+</html>

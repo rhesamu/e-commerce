@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css" />
+  <link rel="stylesheet" href="styles/style.css">
+  <title>E-commerce Admin</title>
+</head>
+<body>
+  <div id="app">
+    <navbar 
+    :cart="cart"
+    :islogin="isLogin"
+    :userrole="userRole" >
+    </navbar>
+    <div class="container" style="margin-top: 80px">
+      <div class="columns">
+        <div class="column is-4">
+          <nav class="panel">
+            <p class="panel-heading">Actions</p>
+            <a href="admin.html" class="panel-block is-active">View products</a>
+            <a href="add.html" class="panel-block">Add new product</a>
+          </nav>
+        </div>
+        <div class="column is-8">
+          <table class="table is-fullwidth is-bordered is-striped">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Stock</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tr v-for="(product, index) in products">
+              <td>{{ product.name }}</td>
+              <td>{{ product.description }}</td>
+              <td>{{ product.category }}</td>
+              <td>{{ product.stock }}</td>
+              <td>
+                <a :href="'edit.html?' + product._id" class="button is-primary">Edit</a>
+                <button @click="deleteItem(product._id)" class="button is-danger">Delete</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  <script src="scripts/components/Navbar.js"></script>
+  <script src="scripts/admin.js"></script>
+</body>
+</html>

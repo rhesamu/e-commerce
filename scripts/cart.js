@@ -1,11 +1,32 @@
+const BASE_URL = 'http://localhost:3000'
+
 new Vue({
   el: '#app',
   data: {
-    cart: []
+    cart: [],
+    isLogin: false,
+    userRole: ''
   },
   created() {
     this.cart = this.getCartItems()
     console.log('cart -->', this.cart)
+
+    if(localStorage.getItem('ecommerce-token')) {
+      let userToken = localStorage.getItem('ecommerce-token')
+      axios({
+        method: 'get',
+        url: `${BASE_URL}/api/users`,
+        headers: { token: userToken }
+      })
+      .then(response => {
+        let user = response.data.user
+        this.isLogin = true
+        this.userRole = user.role
+      })
+      .catch(err => {
+        console.log('get user error', err.response.data)
+      })
+    }
   },
   methods: {
     addItem(itemId) {
