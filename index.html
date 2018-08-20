@@ -10,68 +10,17 @@
 </head>
 <body>
   <div id="app">
-    <nav class="navbar is-warning is-fixed-top">
-      <div class="navbar-brand">
-        <a href="#" class="navbar-item">
-          <h1 style="font-size: 1.5em">isellpictures</h1>
-        </a>
-  
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-  
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="field is-grouped">
-            <div class="control">
-              <input class="input" type="text" placeholder="Search...">
-            </div>
-            <p class="control">
-              <a href="/cart.html" class="button is-primary is-outlined is-inverted">
-                Cart ({{ cart.length }})
-              </a>
-            </p>
-            <p class="control">
-              <a href="/login.html" class="button is-primary">
-                Login
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </nav>
-  
-    <section class="products">
-      <div class="container">
-        <div class="columns is-multiline">
-          <div class="column is-3" v-for="(product, index) in products">
-            <div class="card">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img :src="product.img" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="content">
-                  <h5>{{ product.title }}</h5>
-                  {{ product.description }}
-                  <p>{{ convertPrice(product.price) }}</p>
-                </div>
-              </div>
-              <footer class="card-footer">
-                <a v-on:click="addToCart(product)" class="card-footer-item">Add to cart</a>
-              </footer>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <navbar :cart="cart"></navbar>
+    <product-section
+      :products="products"
+      @add-to-cart="addToCart"
+    />
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+  <script src="scripts/Navbar.js"></script>
+  <script src="scripts/ProductList.js"></script>
+  <script src="scripts/ProductSection.js"></script>
   <script src="scripts/index.js"></script>
 </body>
 </html>
