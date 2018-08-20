@@ -10,7 +10,11 @@
 </head>
 <body>
   <div id="app">
-    <navbar :cart="cart"></navbar>
+    <navbar 
+    :cart="cart"
+    :islogin="isLogin"
+    :userrole="userRole" >
+    </navbar>
     <section class="cart-items">
       <div class="container">
         <div class="columns is-multiline">
@@ -28,8 +32,8 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-  <script src="scripts/Navbar.js"></script>
-  <script src="scripts/CartList.js"></script>
+  <script src="scripts/components/Navbar.js"></script>
+  <script src="scripts/components/CartList.js"></script>
   <script src="scripts/cart.js"></script>
 </body>
 </html>

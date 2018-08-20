@@ -58,13 +58,30 @@ new Vue({
       console.log('cart items-->', this.cart)
     }
 
+    if(localStorage.getItem('ecommerce-token')) {
+      let userToken = localStorage.getItem('ecommerce-token')
+      axios({
+        method: 'get',
+        url: `${BASE_URL}/api/users`,
+        headers: { token: userToken }
+      })
+      .then(response => {
+        let user = response.data.user
+        this.isLogin = true
+        this.userRole = user.role
+      })
+      .catch(err => {
+        console.log('get user error', err.response.data)
+      })
+    }
+
     axios({
       method: 'get',
       url: `${BASE_URL}/api/products`
     })
     .then(response => {
-      console.log(response.data)
       this.products = response.data
+      console.log(response.data)
     })
     .catch(err => {
       console.log('get all products error', err.response)
@@ -72,6 +89,8 @@ new Vue({
   },
   data: {
     cart: [],
-    products: []
+    products: [],
+    isLogin: false,
+    userRole: ''
   }
 })

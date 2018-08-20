@@ -1,10 +1,16 @@
 Vue.component('navbar', {
   // split search form into one component
-  props: ['cart'],
+  props: ['cart', 'islogin', 'userrole'],
+  methods: {
+    logout() {
+      localStorage.removeItem('ecommerce-token')
+      window.location.reload(true)
+    }
+  },
   template: `
   <nav class="navbar is-warning is-fixed-top">
     <div class="navbar-brand">
-      <a href="#" class="navbar-item">
+      <a href="index.html" class="navbar-item">
         <h1 style="font-size: 1.5em">isellpictures</h1>
       </a>
 
@@ -27,8 +33,14 @@ Vue.component('navbar', {
             </a>
           </p>
           <p class="control">
-            <a href="/login.html" class="button is-primary">
+            <a v-if="!islogin" href="/login.html" class="button is-primary">
               Login
+            </a>
+            <button v-else @click="logout" class="button is-primary">
+              Logout
+            </button>
+            <a v-if="userrole == 'admin'" href="/admin.html" class="button is-primary">
+              Admin
             </a>
           </p>
         </div>

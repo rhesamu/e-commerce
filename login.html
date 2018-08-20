@@ -14,6 +14,7 @@
     <div class="containter" style="margin-top: 80px">
       <member-form 
         :type="type"
+        :errormsg="errorMsg"
         @action="action">
       </member-form>
     </div>
@@ -21,8 +22,8 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-  <script src="scripts/Navbar.js"></script>
-  <script src="scripts/MemberForm.js"></script>
+  <script src="scripts/components/Navbar.js"></script>
+  <script src="scripts/components/MemberForm.js"></script>
   <script src="scripts/login.js"></script>
 </body>
 </html>

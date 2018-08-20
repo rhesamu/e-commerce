@@ -4,23 +4,28 @@ new Vue({
   el: '#app',
   data: {
     cart: [],
-    type: 'login'
+    type: 'login',
+    isLogin: false,
+    errorMsg: ''
   },
   methods: {
-    action(input) {
+    action({ email, password }) {
       axios({
         method: 'post',
-        url: `${BASE_URL}/api/login`
+        url: `${BASE_URL}/api/login`,
+        data: { email, password }
       })
       .then(response => {
+        console.log(response.data)
         let token = response.data.token
         if (token) {
           localStorage.setItem('ecommerce-token', token)
-          window.location.replace = "index.html"
+          window.location.replace('index.html')
         }
       })
       .catch(err => {
-        console.log(err.response)
+        console.log(err.response.data.msg)
+        this.errorMsg = err.response.data.msg
       })
     }
   }
