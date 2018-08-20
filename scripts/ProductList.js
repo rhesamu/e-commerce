@@ -10,12 +10,12 @@ Vue.component('product-list', {
     <div class="card">
       <div class="card-image">
         <figure class="image is-4by3">
-          <img :src="product.img" alt="Placeholder image">
+          <img :src="product.image" alt="Placeholder image">
         </figure>
       </div>
       <div class="card-content">
         <div class="content">
-          <h5>{{ product.title }}</h5>
+          <h5>{{ product.name }}</h5>
           {{ product.description }}
           <p>{{ product.price }}</p>
         </div>

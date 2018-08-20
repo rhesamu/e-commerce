@@ -17,11 +17,11 @@ Vue.component('cart-list', {
       <div class="columns">
         <div class="column is-2">
           <figure class="image is-4by3">
-            <img :src="item.img" alt="image">
+            <img :src="item.image" alt="image">
           </figure>
         </div>
         <div class="column is-10">
-          <h1><strong>{{ item.title }}</strong></h1>
+          <h1><strong>{{ item.name }}</strong></h1>
           <p>{{ item.description }}</p>
           <p><strong>Price:</strong> {{ item.price }}</p>
           <p><strong>Qty: {{ item.qty }}</strong> </p>
